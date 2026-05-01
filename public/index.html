@@ -8,308 +8,85 @@
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: #FFFBF7; color: #1C1008; min-height: 100vh; }
 
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: #FFFBF7;
-  color: #1C1008;
-  min-height: 100vh;
-}
-
-/* NAV */
 nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: flex; justify-content: space-between; align-items: center;
   padding: 1.4rem 2.5rem;
   border-bottom: 1px solid #F0E4D4;
 }
-.logo {
-  font-family: 'Lora', serif;
-  font-size: 1.35rem;
-  color: #1C1008;
-  text-decoration: none;
-}
+.logo { font-family: 'Lora', serif; font-size: 1.35rem; color: #1C1008; text-decoration: none; }
 .logo span { color: #E85D26; }
-.nav-btn {
-  padding: 0.55rem 1.3rem;
-  background: #E85D26;
-  color: #fff;
-  border-radius: 50px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  text-decoration: none;
-  transition: opacity 0.2s;
-}
+.nav-btn { padding: 0.55rem 1.3rem; background: #E85D26; color: #fff; border-radius: 50px; font-size: 0.85rem; font-weight: 500; text-decoration: none; transition: opacity 0.2s; }
 .nav-btn:hover { opacity: 0.85; }
 
-/* HERO */
-.hero {
-  max-width: 680px;
-  margin: 0 auto;
-  padding: 6rem 2rem 3rem;
-  text-align: center;
-}
-.pill {
-  display: inline-block;
-  background: #FEF0E8;
-  color: #E85D26;
-  font-size: 0.78rem;
-  font-weight: 500;
-  padding: 0.35rem 1rem;
-  border-radius: 30px;
-  margin-bottom: 1.5rem;
-  letter-spacing: 0.3px;
-}
-h1 {
-  font-family: 'Lora', serif;
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
-  line-height: 1.18;
-  margin-bottom: 1.25rem;
-  color: #1C1008;
-}
+.hero { max-width: 680px; margin: 0 auto; padding: 6rem 2rem 3rem; text-align: center; }
+.pill { display: inline-block; background: #FEF0E8; color: #E85D26; font-size: 0.78rem; font-weight: 500; padding: 0.35rem 1rem; border-radius: 30px; margin-bottom: 1.5rem; }
+h1 { font-family: 'Lora', serif; font-size: clamp(2.2rem, 5vw, 3.2rem); line-height: 1.18; margin-bottom: 1.25rem; }
 h1 i { color: #E85D26; font-style: italic; }
-.sub {
-  font-size: 1.05rem;
-  color: #8B6B55;
-  line-height: 1.7;
-  margin-bottom: 2.5rem;
-  max-width: 480px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.hero-btns {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.btn-main {
-  padding: 0.85rem 2rem;
-  background: #E85D26;
-  color: #fff;
-  border-radius: 50px;
-  font-size: 0.97rem;
-  font-weight: 500;
-  text-decoration: none;
-  box-shadow: 0 6px 20px rgba(232,93,38,0.28);
-  transition: transform 0.2s, box-shadow 0.2s;
-  display: inline-block;
-}
+.sub { font-size: 1.05rem; color: #8B6B55; line-height: 1.7; margin-bottom: 2.5rem; max-width: 460px; margin-left: auto; margin-right: auto; }
+.hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn-main { padding: 0.85rem 2rem; background: #E85D26; color: #fff; border-radius: 50px; font-size: 0.97rem; font-weight: 500; text-decoration: none; box-shadow: 0 6px 20px rgba(232,93,38,0.28); transition: transform 0.2s, box-shadow 0.2s; display: inline-block; }
 .btn-main:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(232,93,38,0.36); }
-.btn-ghost {
-  padding: 0.85rem 2rem;
-  border: 1.5px solid #E8D8C8;
-  color: #1C1008;
-  border-radius: 50px;
-  font-size: 0.97rem;
-  text-decoration: none;
-  transition: border-color 0.2s;
-  display: inline-block;
-}
+.btn-ghost { padding: 0.85rem 2rem; border: 1.5px solid #E8D8C8; color: #1C1008; border-radius: 50px; font-size: 0.97rem; text-decoration: none; transition: border-color 0.2s; display: inline-block; }
 .btn-ghost:hover { border-color: #E85D26; color: #E85D26; }
 
-/* GIFT FINDER APP */
-#app {
-  max-width: 600px;
-  margin: 3rem auto 0;
-  padding: 0 2rem 5rem;
-}
-.card {
-  background: #fff;
-  border: 1px solid #F0E4D4;
-  border-radius: 20px;
-  padding: 2rem;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.04);
-  margin-bottom: 1.25rem;
-}
-.card-title {
-  font-family: 'Lora', serif;
-  font-size: 1.15rem;
-  margin-bottom: 1.5rem;
-  color: #1C1008;
-}
+#app { max-width: 600px; margin: 3rem auto 0; padding: 0 2rem 5rem; }
+.card { background: #fff; border: 1px solid #F0E4D4; border-radius: 20px; padding: 2rem; box-shadow: 0 2px 16px rgba(0,0,0,0.04); margin-bottom: 1.25rem; }
+.card-title { font-family: 'Lora', serif; font-size: 1.15rem; margin-bottom: 1.5rem; }
 .field { margin-bottom: 1.1rem; }
-.field label {
-  display: block;
-  font-size: 0.73rem;
-  font-weight: 500;
-  color: #A07858;
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-  margin-bottom: 0.35rem;
-}
-.field input,
-.field textarea {
-  width: 100%;
-  padding: 0.7rem 1rem;
-  border: 1.5px solid #EEE0D0;
-  border-radius: 12px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.93rem;
-  color: #1C1008;
-  background: #FFFBF7;
-  outline: none;
-  transition: border-color 0.2s;
-}
-.field input:focus,
-.field textarea:focus { border-color: #E85D26; }
+.field label { display: block; font-size: 0.73rem; font-weight: 500; color: #A07858; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 0.35rem; }
+.field input, .field textarea { width: 100%; padding: 0.7rem 1rem; border: 1.5px solid #EEE0D0; border-radius: 12px; font-family: 'DM Sans', sans-serif; font-size: 0.93rem; color: #1C1008; background: #FFFBF7; outline: none; transition: border-color 0.2s; }
+.field input:focus, .field textarea:focus { border-color: #E85D26; }
 .field textarea { resize: vertical; min-height: 72px; }
 
 .budget-row { display: flex; gap: 8px; flex-wrap: wrap; }
-.bud {
-  padding: 0.5rem 1.1rem;
-  border: 1.5px solid #EEE0D0;
-  border-radius: 30px;
-  background: #FFFBF7;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.83rem;
-  cursor: pointer;
-  color: #A07858;
-  transition: all 0.18s;
-}
+.bud { padding: 0.5rem 1.1rem; border: 1.5px solid #EEE0D0; border-radius: 30px; background: #FFFBF7; font-family: 'DM Sans', sans-serif; font-size: 0.83rem; cursor: pointer; color: #A07858; transition: all 0.18s; }
 .bud.on { background: #E85D26; border-color: #E85D26; color: #fff; font-weight: 500; }
 .bud:hover:not(.on) { border-color: #E85D26; color: #E85D26; }
 
-.find-btn {
-  width: 100%;
-  padding: 0.95rem;
-  background: #E85D26;
-  color: #fff;
-  border: none;
-  border-radius: 14px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  margin-top: 0.5rem;
-  transition: opacity 0.2s;
-}
+.find-btn { width: 100%; padding: 0.95rem; background: #E85D26; color: #fff; border: none; border-radius: 14px; font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 500; cursor: pointer; margin-top: 0.5rem; transition: opacity 0.2s; }
 .find-btn:hover { opacity: 0.88; }
 .find-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-/* RESULTS */
-.gift {
-  background: #fff;
-  border: 1px solid #F0E4D4;
-  border-radius: 16px;
-  padding: 1.25rem;
-  margin-bottom: 0.9rem;
-}
+.gift { background: #fff; border: 1px solid #F0E4D4; border-radius: 16px; padding: 1.25rem; margin-bottom: 0.9rem; }
 .gift.saved { border-color: #E85D26; }
 .gift-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 0.4rem; }
 .gift-name { font-family: 'Lora', serif; font-size: 1rem; flex: 1; }
 .gift-price { background: #FEF0E8; color: #E85D26; font-size: 0.76rem; font-weight: 500; padding: 0.22rem 0.7rem; border-radius: 20px; white-space: nowrap; }
 .gift-why { font-size: 0.83rem; color: #A07858; line-height: 1.55; margin-bottom: 0.75rem; }
 .gift-btns { display: flex; gap: 8px; flex-wrap: wrap; }
-.g-shop {
-  padding: 0.45rem 1rem;
-  background: #E85D26;
-  color: #fff;
-  border-radius: 8px;
-  font-size: 0.81rem;
-  font-weight: 500;
-  text-decoration: none;
-  border: none;
-  font-family: 'DM Sans', sans-serif;
-  cursor: pointer;
-  transition: opacity 0.2s;
-}
+.g-shop { padding: 0.45rem 1rem; background: #E85D26; color: #fff; border-radius: 8px; font-size: 0.81rem; font-weight: 500; text-decoration: none; border: none; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: opacity 0.2s; }
 .g-shop:hover { opacity: 0.85; }
-.g-save {
-  padding: 0.45rem 1rem;
-  border: 1.5px solid #EEE0D0;
-  border-radius: 8px;
-  font-size: 0.81rem;
-  background: transparent;
-  color: #A07858;
-  cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
-  transition: all 0.18s;
-}
+.g-save { padding: 0.45rem 1rem; border: 1.5px solid #EEE0D0; border-radius: 8px; font-size: 0.81rem; background: transparent; color: #A07858; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.18s; }
 .g-save:hover, .g-save.on { border-color: #E85D26; color: #E85D26; }
 
-/* EMAIL */
-.email-strip {
-  background: #FEF0E8;
-  border-radius: 14px;
-  padding: 1rem 1.1rem;
-  margin-bottom: 1.1rem;
-  display: flex;
-  gap: 8px;
-}
-.email-strip input {
-  flex: 1;
-  padding: 0.65rem 0.9rem;
-  border: 1.5px solid #EEE0D0;
-  border-radius: 10px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.88rem;
-  outline: none;
-  background: #fff;
-  transition: border-color 0.2s;
-}
+.email-strip { background: #FEF0E8; border-radius: 14px; padding: 1rem 1.1rem; margin-bottom: 1.1rem; display: flex; gap: 8px; }
+.email-strip input { flex: 1; padding: 0.65rem 0.9rem; border: 1.5px solid #EEE0D0; border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; outline: none; background: #fff; transition: border-color 0.2s; }
 .email-strip input:focus { border-color: #E85D26; }
-.email-strip button {
-  padding: 0.65rem 1.1rem;
-  background: #E85D26;
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 500;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: opacity 0.2s;
-}
+.email-strip button { padding: 0.65rem 1.1rem; background: #E85D26; color: #fff; border: none; border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 500; cursor: pointer; white-space: nowrap; transition: opacity 0.2s; }
 .email-strip button:hover { opacity: 0.87; }
 .email-strip button:disabled { opacity: 0.5; cursor: not-allowed; }
 
-/* LOADING */
 .loading { display: flex; align-items: center; gap: 9px; color: #A07858; padding: 1.5rem; justify-content: center; }
 .dot { width: 7px; height: 7px; border-radius: 50%; background: #E85D26; animation: bop 1.2s infinite; }
 .dot:nth-child(2) { animation-delay: 0.2s; }
 .dot:nth-child(3) { animation-delay: 0.4s; }
 @keyframes bop { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-7px)} }
 
-/* TOAST */
-.toast {
-  position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
-  background: #1C1008; color: #fff;
-  padding: 0.6rem 1.3rem; border-radius: 30px;
-  font-size: 0.84rem; opacity: 0;
-  transition: opacity 0.3s; pointer-events: none; z-index: 999;
-  white-space: nowrap;
-}
+.error-msg { background: #FFF0EE; border: 1px solid #FFCCC5; border-radius: 14px; padding: 1rem 1.25rem; color: #C0392B; font-size: 0.9rem; line-height: 1.6; }
+
+.toast { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); background: #1C1008; color: #fff; padding: 0.6rem 1.3rem; border-radius: 30px; font-size: 0.84rem; opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 999; white-space: nowrap; }
 .toast.show { opacity: 1; }
 
-/* HOW section */
-.how {
-  max-width: 680px;
-  margin: 0 auto;
-  padding: 4rem 2rem;
-  text-align: center;
-  border-top: 1px solid #F0E4D4;
-}
+.how { max-width: 680px; margin: 0 auto; padding: 4rem 2rem; text-align: center; border-top: 1px solid #F0E4D4; }
 .how h2 { font-family: 'Lora', serif; font-size: 1.6rem; margin-bottom: 2.5rem; }
 .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; text-align: left; }
 .step-n { font-family: 'Lora', serif; font-size: 1.6rem; color: #EEE0D0; margin-bottom: 0.5rem; }
 .step-t { font-weight: 500; margin-bottom: 0.3rem; font-size: 0.93rem; }
 .step-d { font-size: 0.83rem; color: #A07858; line-height: 1.6; }
 
-/* FOOTER */
-footer {
-  border-top: 1px solid #F0E4D4;
-  padding: 1.75rem 2.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.8rem;
-  color: #C0A888;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
+footer { border-top: 1px solid #F0E4D4; padding: 1.75rem 2.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: #C0A888; flex-wrap: wrap; gap: 0.75rem; }
 .foot-logo { font-family: 'Lora', serif; font-size: 1rem; color: #1C1008; }
 .foot-logo span { color: #E85D26; }
 footer a { color: #C0A888; text-decoration: none; }
@@ -327,13 +104,11 @@ footer a:hover { color: #E85D26; }
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#" class="logo">Insta<span>Shopper</span></a>
   <a href="#app" class="nav-btn">Try it free</a>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
   <div class="pill">✦ AI-powered gift finder</div>
   <h1>The perfect gift,<br>found <i>instantly.</i></h1>
@@ -344,7 +119,6 @@ footer a:hover { color: #E85D26; }
   </div>
 </div>
 
-<!-- APP -->
 <div id="app">
   <div class="card">
     <div class="card-title">Who are you shopping for?</div>
@@ -371,11 +145,9 @@ footer a:hover { color: #E85D26; }
     </div>
     <button class="find-btn" id="find-btn" onclick="findGifts()">✨ Find Perfect Gifts</button>
   </div>
-
   <div id="results"></div>
 </div>
 
-<!-- HOW -->
 <div class="how" id="how">
   <h2>How it works</h2>
   <div class="steps">
@@ -385,14 +157,9 @@ footer a:hover { color: #E85D26; }
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="foot-logo">Insta<span>Shopper</span></div>
-  <div style="display:flex;gap:1.5rem">
-    <a href="#">Privacy</a>
-    <a href="#">Terms</a>
-    <a href="#">Affiliate Disclosure</a>
-  </div>
+  <div style="display:flex;gap:1.5rem"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Affiliate Disclosure</a></div>
   <div>© 2026 InstaShoper</div>
 </footer>
 
@@ -405,15 +172,13 @@ let currentGifts = [];
 
 function toast(msg) {
   const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
+  t.textContent = msg; t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2500);
 }
 
 function setBudget(btn, val) {
   document.querySelectorAll('.bud').forEach(b => b.classList.remove('on'));
-  btn.classList.add('on');
-  budget = val;
+  btn.classList.add('on'); budget = val;
 }
 
 async function findGifts() {
@@ -424,69 +189,43 @@ async function findGifts() {
 
   const btn = document.getElementById('find-btn');
   btn.disabled = true; btn.textContent = 'Finding gifts...';
-
-  document.getElementById('results').innerHTML = `
-    <div class="card">
-      <div class="loading"><div class="dot"></div><div class="dot"></div><div class="dot"></div><span>Finding perfect gifts...</span></div>
-    </div>`;
+  document.getElementById('results').innerHTML = `<div class="card"><div class="loading"><div class="dot"></div><div class="dot"></div><div class="dot"></div><span>Finding perfect gifts...</span></div></div>`;
 
   try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
+    const res = await fetch('/api/gifts', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1200,
-        messages: [{
-          role: 'user',
-          content: `You are a gift expert. Generate exactly 5 unique gift ideas for:
-- Recipient: ${recipient}
-- Interests: ${interests}
-- Occasion: ${occasion || 'general gift'}
-- Budget: ${budget}
-
-Respond ONLY with a valid JSON array, no markdown or backticks:
-[{"name":"...","price":"$XX","why":"One sentence why it is perfect for them.","searchQuery":"Amazon search query"}]`
-        }]
-      })
+      body: JSON.stringify({ recipient, interests, occasion, budget })
     });
     const data = await res.json();
-    const text = data.content.map(i => i.text || '').join('');
-    const gifts = JSON.parse(text.replace(/```json|```/g, '').trim());
+    if (!res.ok) throw new Error(data.error || 'Unknown error');
+    const gifts = data.gifts;
     gifts.forEach((g, i) => g._id = 'g' + i + Date.now());
     currentGifts = gifts;
     renderGifts(gifts, recipient, occasion);
   } catch (e) {
-    document.getElementById('results').innerHTML = `<div class="card" style="color:#CC4A1A;font-size:.9rem">Something went wrong. Please try again!</div>`;
+    document.getElementById('results').innerHTML = `<div class="error-msg">⚠️ ${e.message || 'Something went wrong. Please try again!'}</div>`;
   }
+
   btn.disabled = false; btn.textContent = '✨ Find Perfect Gifts';
 }
 
 function renderGifts(gifts, recipient, occasion) {
   const label = occasion ? `for ${recipient}'s ${occasion}` : `for ${recipient}`;
   let html = `<p style="font-family:'Lora',serif;font-size:1.05rem;margin-bottom:1rem;color:#1C1008">5 gifts ${label}</p>`;
-
-  html += `<div class="email-strip">
-    <input type="email" id="email-in" placeholder="📧 Email this list...">
-    <button id="email-btn" onclick="sendEmail()">Send</button>
-  </div>`;
-
+  html += `<div class="email-strip"><input type="email" id="email-in" placeholder="📧 Email this list..."><button id="email-btn" onclick="sendEmail()">Send</button></div>`;
   gifts.forEach((g, i) => {
     const url = `https://www.amazon.com/s?tag=instashopper-20&k=${encodeURIComponent(g.searchQuery || g.name)}`;
     const fav = !!favorites[g._id];
-    html += `<div class="gift${fav ? ' saved' : ''}" id="card-${g._id}">
-      <div class="gift-top">
-        <div class="gift-name">${i + 1}. ${g.name}</div>
-        <span class="gift-price">${g.price}</span>
-      </div>
+    html += `<div class="gift${fav?' saved':''}" id="card-${g._id}">
+      <div class="gift-top"><div class="gift-name">${i+1}. ${g.name}</div><span class="gift-price">${g.price}</span></div>
       <div class="gift-why">${g.why}</div>
       <div class="gift-btns">
         <a class="g-shop" href="${url}" target="_blank">Shop on Amazon</a>
-        <button class="g-save${fav ? ' on' : ''}" id="fav-${g._id}" onclick="toggleFav('${g._id}')">${fav ? '❤️ Saved' : '🤍 Save'}</button>
+        <button class="g-save${fav?' on':''}" id="fav-${g._id}" onclick="toggleFav('${g._id}')">${fav?'❤️ Saved':'🤍 Save'}</button>
       </div>
     </div>`;
   });
-
   document.getElementById('results').innerHTML = html;
 }
 
@@ -505,19 +244,12 @@ async function sendEmail() {
   if (!email) { toast('Enter an email address'); return; }
   const btn = document.getElementById('email-btn');
   btn.disabled = true; btn.textContent = 'Sending...';
-  const list = currentGifts.map((g, i) => {
-    const url = `https://www.amazon.com/s?tag=instashopper-20&k=${encodeURIComponent(g.searchQuery || g.name)}`;
-    return `${i+1}. ${g.name} — ${g.price}\n   ${g.why}\n   Shop: ${url}`;
-  }).join('\n\n');
+  const list = currentGifts.map((g, i) => `${i+1}. ${g.name} — ${g.price}\n${g.why}`).join('\n\n');
   try {
-    await fetch('https://api.anthropic.com/v1/messages', {
+    await fetch('/api/email', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514', max_tokens: 500,
-        messages: [{ role: 'user', content: `Send this email:\nTo: ${email}\nSubject: 🎁 Your Gift List from InstaShoper\nBody: Here are your gift ideas:\n\n${list}\n\n— InstaShoper.com` }],
-        mcp_servers: [{ type: 'url', url: 'https://gmailmcp.googleapis.com/mcp/v1', name: 'gmail' }]
-      })
+      body: JSON.stringify({ email, list })
     });
     toast('✅ Sent to ' + email);
   } catch (e) { toast('❌ Failed. Try again.'); }

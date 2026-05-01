@@ -1,15 +1,12 @@
-FROM nginx:alpine
+FROM node:20-alpine
 
-# Install bash (more reliable than sh for scripts)
-RUN apk add --no-cache bash
+WORKDIR /app
 
-# Copy site files
-COPY site/ /usr/share/nginx/html/
+COPY package*.json ./
+RUN npm install --production
 
-# Copy nginx template
-COPY nginx.conf.template /etc/nginx/templates/default.conf.template
+COPY . .
 
-# nginx:alpine with the templates folder automatically runs envsubst on startup
-# No custom script needed — Railway's PORT is injected automatically
+EXPOSE 3000
 
-EXPOSE 8080
+CMD ["node", "server.js"]
