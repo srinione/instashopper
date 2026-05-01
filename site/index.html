@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InstaShoper — Find the Perfect Gift in Seconds</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--orange:#FF6B35;--amber:#F7931E;--cream:#FFF8F0;--warm-white:#FFFCF8;--dark:#1A0A00;--muted:#7A5C4A;--border:#F0E0D0}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--dark);overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(255,248,240,0.9);backdrop-filter:blur(14px);border-bottom:1px solid rgba(240,224,208,0.5)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--dark);text-decoration:none}
+.nav-logo span{color:var(--orange)}
+.nav-links{display:flex;gap:1.5rem;align-items:center}
+.nav-links a{font-size:0.87rem;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--orange)}
+.nav-cta{padding:.5rem 1.2rem;background:var(--orange);color:#fff!important;border-radius:30px;font-weight:500}
+.nav-cta:hover{opacity:.88}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;align-items:center;padding:7rem 2rem 4rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 65% 55% at 65% 40%,rgba(255,107,53,.12) 0%,transparent 70%),radial-gradient(ellipse 40% 50% at 15% 75%,rgba(247,147,30,.08) 0%,transparent 60%)}
+.hero-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:7px;background:rgba(255,107,53,.1);border:1px solid rgba(255,107,53,.25);padding:.38rem .9rem;border-radius:30px;font-size:.78rem;color:var(--orange);font-weight:500;margin-bottom:1.4rem;animation:fadeUp .6s ease both}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.4rem);line-height:1.12;margin-bottom:1.3rem;animation:fadeUp .6s .1s ease both}
+h1 em{font-style:italic;color:var(--orange)}
+.hero-sub{font-size:1rem;color:var(--muted);line-height:1.7;margin-bottom:2rem;animation:fadeUp .6s .2s ease both}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp .6s .3s ease both}
+.btn-primary{padding:.85rem 1.8rem;background:linear-gradient(135deg,var(--orange),var(--amber));color:#fff;border-radius:50px;font-size:.95rem;font-weight:500;text-decoration:none;box-shadow:0 8px 24px rgba(255,107,53,.28);transition:transform .2s,box-shadow .2s;display:inline-block}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(255,107,53,.38)}
+.btn-secondary{padding:.85rem 1.8rem;background:transparent;color:var(--dark);border:1.5px solid var(--border);border-radius:50px;font-size:.95rem;text-decoration:none;transition:border-color .2s,color .2s;display:inline-block}
+.btn-secondary:hover{border-color:var(--orange);color:var(--orange)}
+.social-proof{margin-top:1.75rem;display:flex;align-items:center;gap:11px;font-size:.8rem;color:var(--muted);animation:fadeUp .6s .4s ease both}
+.avatars{display:flex}
+.av{width:28px;height:28px;border-radius:50%;border:2px solid var(--cream);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:500;margin-left:-7px}
+.av:first-child{margin-left:0}
+.av1{background:#FFD1B8;color:#CC4A1A}.av2{background:#B8E0D0;color:#0F5E40}.av3{background:#D0C8F0;color:#4A3AAA}.av4{background:#F0D0D0;color:#AA3A3A}
+.stars{color:var(--orange);letter-spacing:-1px}
+
+/* mockup */
+.hero-visual{position:relative;animation:fadeUp .7s .2s ease both}
+.app-mockup{background:#fff;border-radius:22px;box-shadow:0 28px 70px rgba(26,10,0,.11),0 0 0 1px rgba(240,224,208,.7);padding:1.6rem}
+.mk-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.1rem}
+.mk-logo{font-family:'Playfair Display',serif;font-size:1rem}.mk-logo span{color:var(--orange)}
+.mk-badge{background:rgba(255,107,53,.1);color:var(--orange);padding:.22rem .6rem;border-radius:20px;font-size:.7rem;font-weight:500}
+.mk-label{font-size:.66rem;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.28rem}
+.mk-input{width:100%;padding:.55rem .8rem;border:1.5px solid var(--border);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:.82rem;color:var(--muted);background:#FFFAF7;margin-bottom:.9rem}
+.mk-btn{width:100%;padding:.7rem;background:linear-gradient(135deg,var(--orange),var(--amber));color:#fff;border:none;border-radius:10px;font-size:.88rem;font-weight:500;margin-bottom:1rem;font-family:'DM Sans',sans-serif}
+.mk-card{background:#FFFAF7;border:1.5px solid var(--border);border-radius:11px;padding:.8rem;margin-bottom:.6rem;display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.mk-card:last-child{margin-bottom:0}
+.mk-name{font-family:'Playfair Display',serif;font-size:.88rem;margin-bottom:.18rem}
+.mk-desc{font-size:.73rem;color:var(--muted);line-height:1.4}
+.mk-price{background:rgba(255,107,53,.1);color:var(--orange);font-size:.7rem;font-weight:500;padding:.2rem .52rem;border-radius:20px;white-space:nowrap;flex-shrink:0}
+.float-badge{position:absolute;background:#fff;border-radius:12px;padding:.55rem .9rem;box-shadow:0 6px 20px rgba(26,10,0,.1);font-size:.78rem;font-weight:500;display:flex;align-items:center;gap:6px;animation:float 3s ease-in-out infinite}
+.fb1{top:-16px;right:-16px;animation-delay:0s}
+.fb2{bottom:24px;left:-24px;animation-delay:1.5s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+
+/* ── LOGOS ── */
+.logos{padding:2.5rem 2rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--warm-white);text-align:center}
+.logos-label{font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:1.25rem}
+.logos-row{display:flex;justify-content:center;align-items:center;gap:2.5rem;flex-wrap:wrap}
+.partner{font-size:.95rem;font-weight:500;color:#C0A890;letter-spacing:.5px}
+
+/* ── SECTIONS ── */
+.section{padding:5.5rem 2rem}
+.section-inner{max-width:1100px;margin:0 auto}
+.eyebrow{font-size:.75rem;font-weight:500;color:var(--orange);text-transform:uppercase;letter-spacing:1px;margin-bottom:.65rem}
+h2{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3vw,2.5rem);line-height:1.2;margin-bottom:.9rem}
+h2 em{font-style:italic;color:var(--orange)}
+.sec-sub{font-size:.97rem;color:var(--muted);line-height:1.7;max-width:500px;margin-bottom:3rem}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem}
+.step{padding:1.75rem;background:#fff;border-radius:18px;border:1px solid var(--border);transition:transform .25s,box-shadow .25s}
+.step:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(255,107,53,.09)}
+.step-num{font-family:'Playfair Display',serif;font-size:2.6rem;color:rgba(255,107,53,.12);font-weight:700;line-height:1;margin-bottom:.6rem}
+.step-icon{width:42px;height:42px;border-radius:11px;background:rgba(255,107,53,.1);display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:.9rem}
+.step h3{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:.5rem}
+.step p{font-size:.86rem;color:var(--muted);line-height:1.6}
+
+/* features dark */
+.features-sec{background:var(--dark);color:#fff;padding:5.5rem 2rem}
+.features-sec .eyebrow{color:var(--amber)}
+.features-sec h2{color:#fff}
+.features-sec h2 em{color:var(--amber)}
+.features-sec .sec-sub{color:rgba(255,255,255,.5)}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.feat-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:1.6rem;transition:background .25s,border-color .25s}
+.feat-card:hover{background:rgba(255,107,53,.1);border-color:rgba(255,107,53,.28)}
+.feat-icon{width:40px;height:40px;border-radius:10px;background:rgba(255,107,53,.15);border:1px solid rgba(255,107,53,.22);display:flex;align-items:center;justify-content:center;font-size:1rem;margin-bottom:1rem}
+.feat-card h3{font-size:.97rem;font-weight:500;margin-bottom:.45rem;color:#fff}
+.feat-card p{font-size:.83rem;color:rgba(255,255,255,.48);line-height:1.6}
+
+/* testimonials */
+.testi-sec{padding:5.5rem 2rem;background:var(--warm-white)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.testi{background:#fff;border-radius:16px;padding:1.6rem;border:1px solid var(--border)}
+.testi-stars{color:var(--orange);margin-bottom:.75rem;font-size:.88rem;letter-spacing:-1px}
+.testi-text{font-size:.9rem;color:var(--dark);line-height:1.65;margin-bottom:1.1rem;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:9px}
+.testi-av{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.76rem;font-weight:500}
+.testi-name{font-size:.83rem;font-weight:500}
+.testi-handle{font-size:.73rem;color:var(--muted)}
+
+/* ── APP SECTION ── */
+#app{padding:5rem 2rem;background:var(--cream)}
+.app-wrapper{max-width:720px;margin:0 auto}
+.app-header-text{text-align:center;margin-bottom:2.5rem}
+
+/* app UI */
+.app-card{background:#fff;border-radius:20px;padding:1.75rem;box-shadow:0 4px 24px rgba(255,107,53,.07);margin-bottom:1.25rem}
+.app-title{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--dark);margin-bottom:1.1rem}
+.form-group{margin-bottom:1.1rem}
+label{display:block;font-size:.74rem;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:.32rem}
+input,textarea{width:100%;padding:.68rem .9rem;border:1.5px solid var(--border);border-radius:11px;font-family:'DM Sans',sans-serif;font-size:.92rem;color:var(--dark);background:#FFFAF7;outline:none;transition:border-color .2s}
+input:focus,textarea:focus{border-color:var(--orange)}
+textarea{resize:vertical;min-height:70px}
+.budget-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.bud-btn{padding:.52rem;border:1.5px solid var(--border);border-radius:9px;background:#FFFAF7;font-family:'DM Sans',sans-serif;font-size:.8rem;cursor:pointer;transition:all .2s;color:var(--muted);text-align:center}
+.bud-btn.active{background:var(--orange);border-color:var(--orange);color:#fff;font-weight:500}
+.bud-btn:hover:not(.active){border-color:var(--orange);color:var(--orange)}
+.gen-btn{width:100%;padding:.88rem;background:linear-gradient(135deg,var(--orange),var(--amber));color:#fff;border:none;border-radius:13px;font-family:'DM Sans',sans-serif;font-size:.96rem;font-weight:500;cursor:pointer;transition:opacity .2s}
+.gen-btn:hover{opacity:.9}
+.gen-btn:disabled{opacity:.55;cursor:not-allowed}
+
+/* gift cards */
+.gift-card{background:#fff;border-radius:15px;border:1.5px solid var(--border);padding:1.1rem;margin-bottom:.9rem;transition:box-shadow .2s}
+.gift-card:hover{box-shadow:0 4px 16px rgba(255,107,53,.09)}
+.gift-card.faved{border-color:var(--orange);background:#FFFCFA}
+.g-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.38rem;gap:8px}
+.g-num{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;background:var(--orange);color:#fff;border-radius:50%;font-size:.67rem;font-weight:500;margin-right:7px;flex-shrink:0}
+.g-name{font-family:'Playfair Display',serif;font-size:1rem;color:var(--dark);flex:1}
+.g-price{background:rgba(255,107,53,.1);color:var(--orange);font-size:.76rem;font-weight:500;padding:.22rem .62rem;border-radius:20px;white-space:nowrap}
+.g-desc{font-size:.84rem;color:var(--muted);line-height:1.55;margin-bottom:.6rem}
+.g-why{font-size:.78rem;color:#B8775A;background:#FFF8F4;border-left:3px solid var(--orange);padding:.42rem .68rem;border-radius:0 7px 7px 0;margin-bottom:.62rem}
+.g-tag{display:inline-block;background:rgba(255,107,53,.1);color:#CC4A1A;font-size:.7rem;padding:.17rem .5rem;border-radius:20px;margin:0 3px 3px 0}
+.act-row{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:.65rem}
+.shop-btn{padding:.45rem .95rem;background:var(--orange);color:#fff;border-radius:9px;font-size:.81rem;font-weight:500;text-decoration:none;border:none;font-family:'DM Sans',sans-serif;cursor:pointer;transition:opacity .2s}
+.shop-btn:hover{opacity:.87}
+.icon-btn{padding:.42rem .78rem;background:transparent;border:1.5px solid var(--border);border-radius:9px;font-size:.79rem;cursor:pointer;transition:all .2s;color:var(--muted);font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:4px}
+.icon-btn:hover{border-color:var(--orange);color:var(--orange)}
+.icon-btn.fav-on{border-color:var(--orange);color:var(--orange);background:rgba(255,107,53,.08)}
+.note-box{margin-top:.62rem;width:100%;padding:.48rem .68rem;border:1.5px solid var(--border);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:.81rem;color:var(--dark);background:#FFFAF7;outline:none;resize:none;min-height:54px;transition:border-color .2s;display:none}
+.note-box:focus{border-color:var(--orange)}
+
+/* email bar */
+.email-bar{background:#FFF0E8;border-radius:13px;padding:1rem 1.1rem;border:1.5px solid rgba(255,107,53,.18);margin-bottom:1rem}
+.email-row{display:flex;gap:8px;margin-top:.45rem}
+.email-row input{flex:1}
+.send-btn{padding:.65rem 1rem;background:var(--orange);color:#fff;border:none;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:.86rem;font-weight:500;cursor:pointer;white-space:nowrap;transition:opacity .2s}
+.send-btn:hover{opacity:.88}
+.send-btn:disabled{opacity:.5;cursor:not-allowed}
+
+/* tabs */
+.app-tabs{display:flex;gap:4px;background:#F5EDE5;border-radius:12px;padding:4px;margin-bottom:1.5rem}
+.app-tab{flex:1;padding:.6rem;border:none;border-radius:9px;font-family:'DM Sans',sans-serif;font-size:.87rem;cursor:pointer;transition:all .2s;background:transparent;color:var(--muted);font-weight:400;position:relative}
+.app-tab.active{background:#fff;color:var(--orange);font-weight:500;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.tab-badge{position:absolute;top:4px;right:8px;background:var(--orange);color:#fff;font-size:.6rem;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.panel{display:none}.panel.active{display:block}
+
+/* results */
+.results-title{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--dark);margin-bottom:1.1rem}
+.loading{display:flex;align-items:center;gap:9px;color:var(--muted);padding:.75rem 0}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--orange);animation:bounce 1.2s infinite}
+.dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}
+@keyframes bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-7px)}}
+.empty-state{text-align:center;padding:2.5rem 1rem;color:#B8775A}
+.empty-icon{font-size:2.2rem;margin-bottom:.65rem}
+
+/* CTA */
+.cta-sec{padding:6rem 2rem;background:linear-gradient(135deg,var(--orange),var(--amber));text-align:center;position:relative;overflow:hidden}
+.cta-sec::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:500px;height:250px;border-radius:50%;background:rgba(255,255,255,.06)}
+.cta-inner{max-width:560px;margin:0 auto;position:relative}
+.cta-sec h2{color:#fff;font-size:clamp(1.8rem,3.5vw,2.6rem);margin-bottom:.9rem}
+.cta-sec p{color:rgba(255,255,255,.8);font-size:.97rem;margin-bottom:2.25rem;line-height:1.65}
+.signup-row{display:flex;gap:9px;max-width:420px;margin:0 auto}
+.signup-row input{flex:1;padding:.85rem 1.1rem;border:none;border-radius:50px;font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;background:rgba(255,255,255,.95);color:var(--dark)}
+.signup-row input::placeholder{color:var(--muted)}
+.signup-row button{padding:.85rem 1.4rem;background:var(--dark);color:#fff;border:none;border-radius:50px;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:500;cursor:pointer;white-space:nowrap;transition:opacity .2s}
+.signup-row button:hover{opacity:.85}
+.cta-fine{font-size:.76rem;color:rgba(255,255,255,.58);margin-top:.9rem}
+
+/* footer */
+footer{background:var(--dark);padding:2.5rem 2rem}
+.foot-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.foot-logo{font-family:'Playfair Display',serif;font-size:1.15rem;color:#fff}
+.foot-logo span{color:var(--orange)}
+.foot-links{display:flex;gap:1.4rem}
+.foot-links a{font-size:.8rem;color:rgba(255,255,255,.38);text-decoration:none;transition:color .2s}
+.foot-links a:hover{color:rgba(255,255,255,.75)}
+.foot-copy{font-size:.76rem;color:rgba(255,255,255,.3)}
+
+/* toast */
+.toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:var(--dark);color:#fff;padding:.6rem 1.2rem;border-radius:30px;font-size:.83rem;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999;white-space:nowrap}
+.toast.show{opacity:1}
+
+/* reveal */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* responsive */
+@media(max-width:768px){
+  .hero-grid{grid-template-columns:1fr;gap:2rem}
+  .hero-visual{display:none}
+  .steps{grid-template-columns:1fr}
+  .feat-grid{grid-template-columns:1fr 1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .nav-links a:not(.nav-cta){display:none}
+  .signup-row{flex-direction:column}
+  .foot-inner{flex-direction:column;align-items:flex-start}
+  .budget-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:480px){.feat-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Insta<span>Shopper</span></a>
+  <div class="nav-links">
+    <a href="#how-it-works">How it works</a>
+    <a href="#features">Features</a>
+    <a href="#app" class="nav-cta">Try it free →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid">
+    <div>
+      <div class="hero-eyebrow">✦ AI-powered gift finder</div>
+      <h1>The perfect gift,<br>found <em>instantly.</em></h1>
+      <p class="hero-sub">Stop stressing over gifts. Describe the person, set your budget, and InstaShoper's AI finds 5 spot-on ideas with Amazon links — in under 10 seconds.</p>
+      <div class="hero-actions">
+        <a href="#app" class="btn-primary">Find a Gift Now →</a>
+        <a href="#how-it-works" class="btn-secondary">See how it works</a>
+      </div>
+      <div class="social-proof">
+        <div class="avatars">
+          <div class="av av1">KL</div><div class="av av2">MR</div><div class="av av3">JT</div><div class="av av4">AS</div>
+        </div>
+        <div><div class="stars">★★★★★</div><div>Loved by 2,400+ happy gifters</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="float-badge fb1">🎁 5 ideas in 8 seconds</div>
+      <div class="float-badge fb2">❤️ 94% satisfaction rate</div>
+      <div class="app-mockup">
+        <div class="mk-header">
+          <div class="mk-logo">Insta<span>Shopper</span></div>
+          <div class="mk-badge">✨ AI Powered</div>
+        </div>
+        <div class="mk-label">Recipient</div>
+        <div class="mk-input">My dad — loves fishing & coffee</div>
+        <div class="mk-label">Budget</div>
+        <div class="mk-input">$50–$100 · Birthday</div>
+        <button class="mk-btn">✨ Find Perfect Gifts</button>
+        <div class="mk-card"><div><div class="mk-name">Ember Smart Mug 2</div><div class="mk-desc">Temperature-controlled mug for slow morning coffee drinkers</div></div><div class="mk-price">$99</div></div>
+        <div class="mk-card"><div><div class="mk-name">Rapala Tackle Bag Set</div><div class="mk-desc">Pro-grade fishing gear bag with full lure kit included</div></div><div class="mk-price">$65</div></div>
+        <div class="mk-card"><div><div class="mk-name">Yeti Rambler 20oz</div><div class="mk-desc">Vacuum insulated — coffee stays hot on the lake all morning</div></div><div class="mk-price">$38</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS -->
+<div class="logos">
+  <div class="logos-label">Shop results from top retailers</div>
+  <div class="logos-row">
+    <div class="partner">AMAZON</div>
+    <div class="partner">TARGET</div>
+    <div class="partner">ETSY</div>
+    <div class="partner">BEST BUY</div>
+    <div class="partner">NORDSTROM</div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how-it-works">
+  <div class="section-inner">
+    <div class="eyebrow reveal">How it works</div>
+    <h2 class="reveal">Three steps to the <em>perfect</em> gift</h2>
+    <p class="sec-sub reveal">No more scrolling Amazon for hours. InstaShoper does the hard thinking for you.</p>
+    <div class="steps">
+      <div class="step reveal"><div class="step-num">01</div><div class="step-icon">👤</div><h3>Describe the person</h3><p>Tell us who you're buying for — their name, personality, hobbies, and the occasion. The more detail, the better the picks.</p></div>
+      <div class="step reveal" style="transition-delay:.1s"><div class="step-num">02</div><div class="step-icon">⚡</div><h3>AI finds 5 ideas</h3><p>Our AI instantly generates 5 thoughtful, personalized gift ideas tailored to their interests and your exact budget.</p></div>
+      <div class="step reveal" style="transition-delay:.2s"><div class="step-num">03</div><div class="step-icon">🛍️</div><h3>Shop with one click</h3><p>Save favorites, add notes, and buy directly on Amazon — or email the whole list to share with family.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-sec" id="features">
+  <div class="section-inner">
+    <div class="eyebrow reveal">Everything you need</div>
+    <h2 class="reveal">Built for <em>real</em> gift-givers</h2>
+    <p class="sec-sub reveal">Every feature designed to take the stress out of shopping for the people you love.</p>
+    <div class="feat-grid">
+      <div class="feat-card reveal"><div class="feat-icon">🤖</div><h3>AI Gift Generation</h3><p>Powered by Claude AI — truly personalized ideas, not generic lists.</p></div>
+      <div class="feat-card reveal" style="transition-delay:.05s"><div class="feat-icon">❤️</div><h3>Save Favorites</h3><p>Save gifts you love, organized by recipient. Never lose a great idea.</p></div>
+      <div class="feat-card reveal" style="transition-delay:.1s"><div class="feat-icon">📝</div><h3>Personal Notes</h3><p>Add private reminders to any gift — "get the blue one" or "check size."</p></div>
+      <div class="feat-card reveal" style="transition-delay:.15s"><div class="feat-icon">📧</div><h3>Email Delivery</h3><p>Email your gift list to yourself or anyone — arrives with direct shopping links.</p></div>
+      <div class="feat-card reveal" style="transition-delay:.2s"><div class="feat-icon">💰</div><h3>Any Budget</h3><p>From stocking stuffers to splurge-worthy presents — always within your limit.</p></div>
+      <div class="feat-card reveal" style="transition-delay:.25s"><div class="feat-icon">⚡</div><h3>Instant Results</h3><p>Results in seconds. No browsing. No waiting. Just perfect gift ideas.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi-sec">
+  <div class="section-inner">
+    <div class="eyebrow reveal">What people are saying</div>
+    <h2 class="reveal">Gifters <em>love</em> InstaShoper</h2>
+    <p class="sec-sub reveal">Join thousands who've made gift-giving effortless.</p>
+    <div class="testi-grid">
+      <div class="testi reveal"><div class="testi-stars">★★★★★</div><p class="testi-text">"Found the most perfect gift for my husband's birthday in 30 seconds. It knew exactly what a coffee-obsessed cyclist would love."</p><div class="testi-author"><div class="testi-av av1">KL</div><div><div class="testi-name">Kelly L.</div><div class="testi-handle">@kellyloves.life</div></div></div></div>
+      <div class="testi reveal" style="transition-delay:.1s"><div class="testi-stars">★★★★★</div><p class="testi-text">"Finally a gift site that doesn't show me random stuff. It actually thought about who my sister IS and gave ideas that felt personal."</p><div class="testi-author"><div class="testi-av av2">MR</div><div><div class="testi-name">Maria R.</div><div class="testi-handle">@mariafrommiami</div></div></div></div>
+      <div class="testi reveal" style="transition-delay:.2s"><div class="testi-stars">★★★★★</div><p class="testi-text">"The email feature is genius. Found 5 ideas and emailed the list to my mom so we could split the cost. Saved so much back-and-forth."</p><div class="testi-author"><div class="testi-av av3">JT</div><div><div class="testi-name">James T.</div><div class="testi-handle">@jamestravels</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ LIVE APP ══════════════ -->
+<section id="app">
+  <div class="app-wrapper">
+    <div class="app-header-text reveal">
+      <div class="eyebrow">Try it now — it's free</div>
+      <h2>Find the perfect gift <em>right now</em></h2>
+      <p style="color:var(--muted);font-size:.97rem;line-height:1.7;max-width:460px;margin:0 auto">Describe your person below and let the AI do the rest.</p>
+    </div>
+
+    <div class="app-tabs">
+      <button class="app-tab active" id="tab-finder" onclick="switchTab('finder')">🔍 Gift Finder</button>
+      <button class="app-tab" id="tab-favorites" onclick="switchTab('favorites')">❤️ Favorites <span class="tab-badge" id="fav-badge" style="display:none">0</span></button>
+    </div>
+
+    <!-- FINDER PANEL -->
+    <div class="panel active" id="panel-finder">
+      <div class="app-card">
+        <div class="app-title">Who are you shopping for?</div>
+        <div class="form-group">
+          <label>Recipient</label>
+          <input type="text" id="recipient" placeholder="e.g. My dad, best friend, sister...">
+        </div>
+        <div class="form-group">
+          <label>Their interests & personality</label>
+          <textarea id="interests" placeholder="e.g. Loves fishing, watches football, coffee addict, enjoys cooking..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>Occasion</label>
+          <input type="text" id="occasion" placeholder="e.g. Birthday, Christmas, graduation, just because...">
+        </div>
+        <div class="form-group">
+          <label>Budget</label>
+          <div class="budget-grid">
+            <button class="bud-btn" onclick="setBudget(this,'Under $25')">Under $25</button>
+            <button class="bud-btn active" onclick="setBudget(this,'$25–$50')">$25–$50</button>
+            <button class="bud-btn" onclick="setBudget(this,'$50–$100')">$50–$100</button>
+            <button class="bud-btn" onclick="setBudget(this,'$100+')">$100+</button>
+          </div>
+        </div>
+        <button class="gen-btn" id="gen-btn" onclick="generateGifts()">✨ Find Perfect Gifts</button>
+      </div>
+      <div id="results"></div>
+    </div>
+
+    <!-- FAVORITES PANEL -->
+    <div class="panel" id="panel-favorites">
+      <div id="fav-list"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <div class="cta-inner">
+    <h2>Start finding perfect gifts today</h2>
+    <p>Free to use. No account needed. Just describe your person and let the AI do the rest.</p>
+    <div class="signup-row">
+      <input type="email" placeholder="Enter your email for updates...">
+      <button onclick="this.textContent='✓ You\'re in!';this.style.background='#1A0A00'">Notify Me</button>
+    </div>
+    <div class="cta-fine">No spam. Just gift inspo and feature updates. Unsubscribe anytime.</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-logo">Insta<span>Shopper</span></div>
+    <div class="foot-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Affiliate Disclosure</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="foot-copy">© 2026 InstaShoper. All rights reserved.</div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── State ──
+let budget = '$25–$50';
+let favorites = {};
+let notes = {};
+let currentGifts = [];
+let currentCtx = {};
+
+// ── Helpers ──
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600)}
+function setBudget(btn,val){document.querySelectorAll('.bud-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');budget=val}
+function switchTab(tab){
+  document.querySelectorAll('.app-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+  document.getElementById('panel-'+tab).classList.add('active');
+  if(tab==='favorites') renderFavorites();
+}
+function updateBadge(){
+  const n=Object.keys(favorites).length;
+  const b=document.getElementById('fav-badge');
+  b.textContent=n; b.style.display=n>0?'flex':'none';
+}
+
+// ── Generate ──
+async function generateGifts(){
+  const recipient=document.getElementById('recipient').value.trim();
+  const interests=document.getElementById('interests').value.trim();
+  const occasion=document.getElementById('occasion').value.trim();
+  if(!recipient||!interests){toast('Please fill in recipient & interests!');return}
+
+  currentCtx={recipient,interests,occasion,budget};
+  const btn=document.getElementById('gen-btn');
+  btn.disabled=true;btn.textContent='Finding gifts...';
+  document.getElementById('results').innerHTML=`<div class="app-card"><div class="loading"><div class="dot"></div><div class="dot"></div><div class="dot"></div><span>Finding perfect gifts...</span></div></div>`;
+
+  try{
+    const prompt=`You are a thoughtful gift expert. Generate exactly 5 unique, creative gift ideas for:
+- Recipient: ${recipient}
+- Interests/Personality: ${interests}
+- Occasion: ${occasion||'General gift'}
+- Budget: ${budget}
+
+Respond ONLY with a valid JSON array. No markdown, no backticks, no extra text:
+[{"name":"...","price":"$XX","description":"2 sentences about the product.","why":"One sentence why it is perfect for them.","tags":["tag1","tag2","tag3"],"searchQuery":"exact Amazon search query"}]`;
+
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1200,messages:[{role:'user',content:prompt}]})
+    });
+    const data=await res.json();
+    const text=data.content.map(i=>i.text||'').join('');
+    const clean=text.replace(/```json|```/g,'').trim();
+    const gifts=JSON.parse(clean);
+    gifts.forEach((g,i)=>g._id='g'+Date.now()+i);
+    currentGifts=gifts;
+    renderGifts(gifts,recipient,occasion);
+  }catch(e){
+    document.getElementById('results').innerHTML=`<div class="app-card"><p style="color:#CC4A1A;font-size:.9rem">Something went wrong. Please try again!</p></div>`;
+  }
+  btn.disabled=false;btn.textContent='✨ Find Perfect Gifts';
+}
+
+function renderGifts(gifts,recipient,occasion){
+  const label=occasion?`for ${recipient}'s ${occasion}`:`for ${recipient}`;
+  let html=`<div class="results-title">5 perfect gifts ${label}</div>`;
+  html+=`<div class="email-bar">
+    <label style="display:block;font-size:.72rem;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:.3rem">📧 Email this gift list</label>
+    <div class="email-row">
+      <input type="email" id="email-input" placeholder="Enter email address...">
+      <button class="send-btn" id="send-btn" onclick="sendEmail()">Send List</button>
+    </div>
+  </div>`;
+  gifts.forEach((g,i)=>{
+    const tags=(g.tags||[]).map(t=>`<span class="g-tag">${t}</span>`).join('');
+    const url=`https://www.amazon.com/s?tag=instashopper-20&k=${encodeURIComponent(g.searchQuery||g.name)}`;
+    const fav=!!favorites[g._id];
+    html+=`<div class="gift-card${fav?' faved':''}" id="card-${g._id}">
+      <div class="g-header">
+        <div style="display:flex;align-items:center;flex:1;margin-right:8px"><span class="g-num">${i+1}</span><div class="g-name">${g.name}</div></div>
+        <span class="g-price">${g.price}</span>
+      </div>
+      <div class="g-desc">${g.description}</div>
+      <div class="g-why">Why it's perfect: ${g.why}</div>
+      <div style="margin-bottom:.6rem">${tags}</div>
+      <div class="act-row">
+        <a class="shop-btn" href="${url}" target="_blank">Shop on Amazon</a>
+        <button class="icon-btn${fav?' fav-on':''}" id="fav-${g._id}" onclick="toggleFav('${g._id}')">${fav?'❤️ Saved':'🤍 Save'}</button>
+        <button class="icon-btn" onclick="toggleNote('${g._id}')">📝 Note</button>
+      </div>
+      <textarea class="note-box" id="note-${g._id}" placeholder="Add a personal note..." oninput="saveNote('${g._id}',this.value)"></textarea>
+    </div>`;
+  });
+  document.getElementById('results').innerHTML=html;
+}
+
+function toggleFav(id){
+  const g=currentGifts.find(x=>x._id===id);
+  if(!g)return;
+  if(favorites[id]){delete favorites[id];toast('Removed from favorites')}
+  else{favorites[id]={...g,ctx:currentCtx};toast('❤️ Saved to favorites!')}
+  updateBadge();
+  const card=document.getElementById('card-'+id);
+  const btn=document.getElementById('fav-'+id);
+  if(card){card.classList.toggle('faved',!!favorites[id]);btn.classList.toggle('fav-on',!!favorites[id]);btn.textContent=favorites[id]?'❤️ Saved':'🤍 Save'}
+}
+function toggleNote(id){const a=document.getElementById('note-'+id);a.style.display=a.style.display==='none'||!a.style.display?'block':'none';if(a.style.display==='block')a.focus()}
+function saveNote(id,val){notes[id]=val}
+
+// ── Email via Gmail MCP ──
+async function sendEmail(){
+  const email=document.getElementById('email-input').value.trim();
+  if(!email){toast('Please enter an email');return}
+  const btn=document.getElementById('send-btn');
+  btn.disabled=true;btn.textContent='Sending...';
+  const {recipient,occasion,budget}=currentCtx;
+  const list=currentGifts.map((g,i)=>{
+    const note=notes[g._id]?`\n   Note: ${notes[g._id]}`:'';
+    const url=`https://www.amazon.com/s?tag=instashopper-20&k=${encodeURIComponent(g.searchQuery||g.name)}`;
+    return `${i+1}. ${g.name} — ${g.price}\n   ${g.why}\n   Shop: ${url}${note}`;
+  }).join('\n\n');
+  const body=`Hi!\n\nHere's your personalized gift list from InstaShoper for ${recipient}${occasion?" ("+occasion+")":""}:\n\nBudget: ${budget}\n\n${list}\n\n---\nGenerated by InstaShoper.com`;
+  try{
+    await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',max_tokens:500,
+        messages:[{role:'user',content:`Send this email exactly as written. To: ${email}\nSubject: 🎁 Gift Ideas for ${recipient} — InstaShoper\nBody: ${body}`}],
+        mcp_servers:[{type:'url',url:'https://gmailmcp.googleapis.com/mcp/v1',name:'gmail'}]
+      })
+    });
+    toast('✅ Gift list sent to '+email);
+  }catch(e){toast('❌ Failed to send. Try again.')}
+  btn.disabled=false;btn.textContent='Send List';
+}
+
+// ── Favorites ──
+function renderFavorites(){
+  const list=Object.values(favorites);
+  const container=document.getElementById('fav-list');
+  if(!list.length){
+    container.innerHTML=`<div class="app-card"><div class="empty-state"><div class="empty-icon">🤍</div><div style="font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:.5rem;color:var(--dark)">No favorites yet</div><div style="font-size:.84rem">Save gifts you love from the Gift Finder!</div></div></div>`;
+    return;
+  }
+  const groups={};
+  list.forEach(g=>{
+    const key=g.ctx?`${g.ctx.recipient}${g.ctx.occasion?' — '+g.ctx.occasion:''}` :'Saved Gifts';
+    if(!groups[key])groups[key]=[];
+    groups[key].push(g);
+  });
+  let html=`<div style="font-size:.82rem;color:var(--muted);margin-bottom:1rem">${list.length} saved gift${list.length>1?'s':''}</div>`;
+  Object.entries(groups).forEach(([name,gifts])=>{
+    html+=`<div class="results-title" style="font-size:1.05rem;margin-bottom:.75rem">${name}</div>`;
+    const eid='fe-'+name.replace(/\W/g,'');
+    html+=`<div class="email-bar" style="margin-bottom:.75rem">
+      <label style="display:block;font-size:.72rem;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:.3rem">📧 Email these favorites</label>
+      <div class="email-row"><input type="email" id="${eid}" placeholder="Enter email..."><button class="send-btn" onclick="sendFavEmail('${name}','${eid}')">Send</button></div>
+    </div>`;
+    gifts.forEach(g=>{
+      const url=`https://www.amazon.com/s?tag=instashopper-20&k=${encodeURIComponent(g.searchQuery||g.name)}`;
+      const note=notes[g._id];
+      html+=`<div class="gift-card faved" style="margin-bottom:.8rem">
+        <div class="g-header"><div class="g-name">❤️ ${g.name}</div><span class="g-price">${g.price}</span></div>
+        <div class="g-desc">${g.description}</div>
+        <div class="g-why">Why it's perfect: ${g.why}</div>
+        ${note?`<div style="font-size:.8rem;color:var(--muted);background:#FFF8F0;border-radius:8px;padding:.42rem .65rem;margin-bottom:.6rem">📝 ${note}</div>`:''}
+        <div class="act-row">
+          <a class="shop-btn" href="${url}" target="_blank">Shop on Amazon</a>
+          <button class="icon-btn" onclick="removeFav('${g._id}')">🗑 Remove</button>
+        </div>
+      </div>`;
+    });
+    html+='<div style="height:1px;background:var(--border);margin:1rem 0"></div>';
+  });
+  container.innerHTML=html;
+}
+
+function removeFav(id){delete favorites[id];updateBadge();renderFavorites();toast('Removed from favorites')}
+
+async function sendFavEmail(name,eid){
+  const email=document.getElementById(eid).value.trim();
+  if(!email){toast('Enter an email address');return}
+  const list=Object.values(favorites).filter(g=>{
+    const key=g.ctx?`${g.ctx.recipient}${g.ctx.occasion?' — '+g.ctx.occasion:''}` :'Saved Gifts';
+    return key===name;
+  });
+  const lines=list.map((g,i)=>{
+    const note=notes[g._id]?`\n   Note: ${notes[g._id]}`:'';
+    const url=`https://www.amazon.com/s?tag=instashopper-20&k=${encodeURIComponent(g.searchQuery||g.name)}`;
+    return `${i+1}. ${g.name} — ${g.price}\n   ${g.why}\n   Shop: ${url}${note}`;
+  }).join('\n\n');
+  const body=`Hi!\n\nHere are your saved gift favorites for ${name}:\n\n${lines}\n\n---\nGenerated by InstaShoper.com`;
+  try{
+    await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',max_tokens:500,
+        messages:[{role:'user',content:`Send this email exactly. To: ${email}\nSubject: 🎁 My Saved Gift Favorites — InstaShoper\nBody: ${body}`}],
+        mcp_servers:[{type:'url',url:'https://gmailmcp.googleapis.com/mcp/v1',name:'gmail'}]
+      })
+    });
+    toast('✅ Favorites sent to '+email);
+  }catch(e){toast('❌ Failed to send. Try again.')}
+}
+
+// ── Scroll reveal ──
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+</script>
+</body>
+</html>
